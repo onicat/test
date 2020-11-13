@@ -4,7 +4,6 @@ const findEntry = require('./scripts/findEntry');
 
 module.exports = {
   mode: "development",
-  devtool: "inline-source-map",
   entry: findEntry(files),
   output: {
     filename: files.bundleName,
