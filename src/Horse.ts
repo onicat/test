@@ -1,1 +1,0 @@
-import { Animal } from './Animal'; export class Horse extends Animal { move() { console.log('Galloping...'); super.move(45); } }

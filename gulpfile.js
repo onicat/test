@@ -1,7 +1,8 @@
 const getConfigData = require('./scripts/getConfigData');
 const gulp = require('gulp');
-const shell = require('gulp-shell');
 const fs = require('fs');
+
+const buildPath = './src'
 
 async function build() {
   const configData = getConfigData();
@@ -23,7 +24,15 @@ async function build() {
 }
 
 async function clear() {
-  console.log('clear');
+  fs.rmdir(buildPath, {recursive: true}, (err) => {
+    if (err) {
+      throw err
+    } else {
+      fs.mkdir(buildPath, (err) => {
+        if (err) throw err;
+      });
+    };
+  });
 }
 
 async function bundle() {
