@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "- Код приложения должен быть на TS 3.9+ (Node.js 10.15+)\r - Приложение должно читать `files.json` и создавать исходные файлы указанные в конфиге.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
