@@ -1,4 +1,6 @@
-export default (files) => {
+import Files from '../models/Files';
+
+export default (files: Files) => {
   for (let fileOprions of files.files) {
     if (fileOprions.entry) {
       const file = fileOprions.file;
