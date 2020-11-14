@@ -5,7 +5,7 @@ import { exec } from 'child_process'
 
 const buildPath = './src';
 
-export const build = async () => {
+gulp.task('build', async () => {
   for (let fileOptions of files.files) {
     const file = fileOptions.file;
     const dirPath = file.slice(0, file.lastIndexOf('/'));
@@ -21,21 +21,21 @@ export const build = async () => {
     await fs.promises.appendFile(file, fileOptions.content);
 
   }
-}
+});
 
-export const clear = async () => {
+gulp.task('clear', async () => {
   if (fs.existsSync(buildPath)){
     await fs.promises.rmdir(buildPath, {recursive: true});
   }
   
   await fs.promises.mkdir(buildPath);
-}
+});
 
-export const bundle = async () => {
+gulp.task('bundle', async () => {
   return exec('.\\node_modules\\.bin\\webpack', (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
   });
-}
+});
 
-export const run = gulp.series(clear, build, bundle);
+gulp.task('run', gulp.series('clear', 'build', 'bundle'));
