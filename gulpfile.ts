@@ -36,7 +36,7 @@ const clear = async () => {
 }
 
 const bundle = async () => {
-  return exec('webpack', (err, stdout, stderr) => {
+  return exec('.\\node_modules\\.bin\\webpack', (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
   });

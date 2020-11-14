@@ -1,8 +1,8 @@
 const files = require('./files.json');
 const path = require('path');
-const findEntry = require('./scripts/findEntry');
+const findEntry = require('./scripts/findEntry.ts');
 
-module.exports = {
+export default {
   mode: "development",
   entry: findEntry(files),
   output: {
