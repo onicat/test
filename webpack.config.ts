@@ -1,6 +1,6 @@
-const files = require('./files.json');
-const path = require('path');
-const findEntry = require('./scripts/findEntry.ts');
+import * as files from './files.json';
+import path from 'path';
+import findEntry from './scripts/findEntry';
 
 export default {
   mode: "development",

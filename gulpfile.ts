@@ -1,8 +1,7 @@
-const files = require('./files.json');
-const gulp = require('gulp');
-const fsPromises = require('fs').promises;
-const fs = require('fs');
-const exec = require('child_process').exec;;
+import * as files from './files.json';
+import gulp from 'gulp';
+import fs from 'fs'; 
+import { exec } from 'child_process'
 
 const buildPath = './src';
 
@@ -12,27 +11,19 @@ const build = async () => {
     const dirPath = file.slice(0, file.lastIndexOf('/'));
 
     if (!fs.existsSync(dirPath)){
-      await fsPromises.mkdir(dirPath, {recursive: true}, (err) => {
-        if (err) throw err;
-      });
+      await fs.promises.mkdir(dirPath, {recursive: true});
     }
 
-    await fsPromises.appendFile(file, fileOptions.content, (err) => {
-      if (err) throw err;
-    });
+    await fs.promises.appendFile(file, fileOptions.content);
   }
 }
 
 const clear = async () => {
   if (fs.existsSync(buildPath)){
-    await fsPromises.rmdir(buildPath, {recursive: true}, (err) => {
-      if (err) throw err;
-    });
+    await fs.promises.rmdir(buildPath, {recursive: true});
   }
   
-  await fsPromises.mkdir(buildPath, (err) => {
-    if (err) throw err;
-  });
+  await fs.promises.mkdir(buildPath);
 }
 
 const bundle = async () => {

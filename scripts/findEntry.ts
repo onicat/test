@@ -1,4 +1,4 @@
-module.exports = (files) => {
+export default (files) => {
   for (let fileOprions of files.files) {
     if (fileOprions.entry) {
       const file = fileOprions.file;
