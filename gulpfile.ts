@@ -14,7 +14,12 @@ export const build = async () => {
       await fs.promises.mkdir(dirPath, {recursive: true});
     }
 
+    if (fs.existsSync(file)){
+      await fs.promises.rm(file);
+    }
+
     await fs.promises.appendFile(file, fileOptions.content);
+
   }
 }
 
